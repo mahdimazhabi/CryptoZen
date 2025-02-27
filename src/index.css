@@ -1,0 +1,33 @@
+@import "tailwindcss";
+.gradient-border {
+  position: relative;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 16px; /* گردی دکمه */
+  background: transparent; /* پس‌زمینه شفاف */
+  cursor: pointer;
+  overflow: hidden; /* جلوگیری از بیرون زدن */
+  text-transform: capitalize;
+  font-weight: 500;
+  border: 2px solid transparent; /* شفاف برای نگه داشتن فضا */
+  background-clip: padding-box;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* ضخامت بردر */
+  border-radius: inherit;
+  background: linear-gradient(to right, #1ad061, #0b7999); /* رنگ گرادیانت */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude; /* فقط خط بیرونی نمایش داده میشه */
+  pointer-events: none; /* غیرفعال برای کلیک */
+}
+
+.gradient-border span {
+  background: linear-gradient(to right, #1ad061, #0b7999); /* گرادیانت متن */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* متن شفاف برای دیدن گرادیانت */
+}
